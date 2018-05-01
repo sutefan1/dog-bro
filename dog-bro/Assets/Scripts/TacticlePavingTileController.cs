@@ -1,0 +1,1 @@
+﻿using System.Collections;using System.Collections.Generic;using UnityEngine;public class TacticlePavingTileController : MonoBehaviour {    public SteamVR_TrackedController controller;    // Use this for initialization    void Start () {			}		// Update is called once per frame	void Update () {			}}
