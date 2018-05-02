@@ -7,6 +7,9 @@ public class MovementController : MonoBehaviour {
     public SteamVR_TrackedController controller;
     public BlindController blindController;
 
+    public Transform cameraRigTransform;
+    public Transform headTransform; 
+
     private SteamVR_Controller.Device device;
 
 
@@ -16,7 +19,6 @@ public class MovementController : MonoBehaviour {
         controller.TriggerClicked += HandleTriggerClicked;
 
         device = SteamVR_Controller.Input((int)controller.controllerIndex);
-
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)

@@ -7,6 +7,7 @@ public class GoalTileController : TactileController {
     private void OnTriggerEnter(Collider other)
     {
         // TODO: Notify that the goal has been reached
+        // TODO: Add a rigidbody to moving object. Otherwise, this will never be triggered
         Debug.Log("Wuhu - Goal Reached!");
     }
 }
