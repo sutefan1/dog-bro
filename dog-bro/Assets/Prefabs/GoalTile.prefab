@@ -491,7 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986967864080880}
   - component: {fileID: 65659124726701922}
-  - component: {fileID: 114286448719140634}
+  - component: {fileID: 114763884300341766}
   m_Layer: 0
   m_Name: GoalTile
   m_TagString: Untagged
@@ -2085,7 +2085,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 2, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &114286448719140634
+--- !u!114 &114763884300341766
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2093,7 +2093,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1890324556998308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7f5455176ad4c4d9d6cfc1604c38d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 97aee4b460c114f5cb7cfdfc22f61f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135056224706206862
