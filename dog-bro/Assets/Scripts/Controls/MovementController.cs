@@ -18,24 +18,39 @@ public class MovementController : MonoBehaviour {
         controller.TriggerClicked -= HandleTriggerClicked;
         controller.TriggerClicked += HandleTriggerClicked;
 
-        device = SteamVR_Controller.Input((int)controller.controllerIndex);
+       // device = SteamVR_Controller.Input((int)controller.controllerIndex);
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
         blindController.ToggleBlindness();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(blindController.IsBlind()) {
+    void FixedUpdate()
+    {
+        device = SteamVR_Controller.Input((int)controller.controllerIndex);
+    }
 
-            float xAxis = device.GetAxis().x;
+    // Update is called once per frame
+    void Update () {
+        //blindController.IsBlind() &&
+        if ( controller.padPressed) {
+
             float yAxis = device.GetAxis().y;
 
-            // TODO: Make this into movement
+            float movementSpeed = 1f;
+
+            if(yAxis < -0.5)
+            {
+                movementSpeed *= -1;
+            }
+
+            Vector3 headForward = headTransform.forward;
+            headForward.y = 0;
+
+            cameraRigTransform.position += headForward * movementSpeed * Time.deltaTime;
+
         }
 
-	}
+    }
 }
