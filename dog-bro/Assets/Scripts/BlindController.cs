@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class BlindController : MonoBehaviour {
 
+    private GameController gameController;
+
     private float _fadeDuration = 1f;
     private bool isBlind;
 
     void Start()
     {
-        
+         gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     public void ToggleBlindness() 
     {
+
+        if (gameController.IsGameFinished()) { return; }
+
         isBlind = !isBlind;
 
         if(isBlind) {
@@ -22,6 +27,7 @@ public class BlindController : MonoBehaviour {
             SteamVR_Fade.Start(Color.clear, _fadeDuration, true);
         }
     }
+
 
     public bool IsBlind() 
     {

@@ -33,8 +33,8 @@ public class MovementController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //blindController.IsBlind() &&
-        if ( controller.padPressed) {
+
+        if (blindController.IsBlind() && controller.padPressed) {
 
             float yAxis = device.GetAxis().y;
 

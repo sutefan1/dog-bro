@@ -8,6 +8,16 @@ public class GoalTileController : TactileController {
     {
         // TODO: Notify that the goal has been reached
         // TODO: Add a rigidbody to moving object. Otherwise, this will never be triggered
-        Debug.Log("Wuhu - Goal Reached!");
+
+        PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+
+        GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+        if (playerController != null)
+        {
+            Debug.Log("Goal Reached!");
+
+            gameController.GoalReached();
+        }
     }
 }

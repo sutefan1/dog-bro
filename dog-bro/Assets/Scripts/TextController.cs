@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialController : MonoBehaviour {
+public class TextController : MonoBehaviour {
 
-    public Text tutorialText;
+    public GameObject goalReachedText;
 
     private bool tutoralIsRunning = false;
 
@@ -13,7 +13,12 @@ public class TutorialController : MonoBehaviour {
     // Potentially replace it with a voice explenation instead of text.
     public void ToggleTutorial()
     {
-        tutoralIsRunning = !tutoralIsRunning;
-        tutorialText.enabled = tutoralIsRunning;
+        //tutoralIsRunning = !tutoralIsRunning;
+        //tutorialText.enabled = tutoralIsRunning;
+    }
+
+    public void ShowGoalReachedText()
+    {
+        goalReachedText.active = true;
     }
 }
