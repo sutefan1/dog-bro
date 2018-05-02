@@ -23,7 +23,8 @@ public class BlindController : MonoBehaviour {
         }
     }
 
-    public bool IsBlind() {
+    public bool IsBlind() 
+    {
         return isBlind;
     }
 
