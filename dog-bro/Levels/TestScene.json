@@ -1,0 +1,175 @@
+[
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -5.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -4.5,
+	  "rotY": 0
+	},{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -4,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -3.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -3,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -2.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -2,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -1.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -1,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": -0.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 0,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 0.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 1,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 1.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 2,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 2.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 3,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 3.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "TacticlePavingTile",
+	  "posX": 0,
+	  "posZ": 4,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": 0.5,
+	  "posZ": 4.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": 0,
+	  "posZ": 4.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": -0.5,
+	  "posZ": 4.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": 0.5,
+	  "posZ": 5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": 0,
+	  "posZ": 5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": -0.5,
+	  "posZ": 5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": 0.5,
+	  "posZ": 5.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": 0,
+	  "posZ": 5.5,
+	  "rotY": 0
+	},
+	{
+	  "name": "GoalTile",
+	  "posX": -0.5,
+	  "posZ": 5.5,
+	  "rotY": 0
+	}
+]
