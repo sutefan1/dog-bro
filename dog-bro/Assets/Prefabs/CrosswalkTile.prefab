@@ -495,3 +495,7 @@ MonoBehaviour:
   trafficLightOnGreen: 10
   startWithRedLight: 1
   ground: {fileID: 1106237552311240}
+  crosswalkGreenMaterial: {fileID: 2100000, guid: a27958be1d22046f5b257412502551b5,
+    type: 2}
+  crosswalkRedMaterial: {fileID: 2100000, guid: 424d720b4848248b99a0e42f2966fc19,
+    type: 2}
