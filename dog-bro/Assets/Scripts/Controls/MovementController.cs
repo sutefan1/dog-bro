@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour {
+public class MovementController : MonoBehaviour
+{
 
     public SteamVR_TrackedController controller;
     public BlindController blindController;
 
     public Transform cameraRigTransform;
-    public Transform headTransform; 
+    public Transform headTransform;
 
     private SteamVR_Controller.Device device;
 
 
     private void OnEnable()
     {
-        controller.TriggerClicked -= HandleTriggerClicked;
-        controller.TriggerClicked += HandleTriggerClicked;
+        //    controller.TriggerClicked -= HandleTriggerClicked;
+        //   controller.TriggerClicked += HandleTriggerClicked;
 
-       // device = SteamVR_Controller.Input((int)controller.controllerIndex);
+        // device = SteamVR_Controller.Input((int)controller.controllerIndex);
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
@@ -28,11 +29,33 @@ public class MovementController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        device = SteamVR_Controller.Input((int)controller.controllerIndex);
+        //   device = SteamVR_Controller.Input((int)controller.controllerIndex);
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
+
+        float movementSpeed = 1f;
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(new Vector3(0, 0, -movementSpeed * Time.deltaTime));
+            transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
+            //transform.Translate(new Vector3(0, -movementSpeed * Time.deltaTime, 0));
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
+        }
+        /*
 
         if (blindController.IsBlind() && controller.padPressed) {
 
@@ -51,6 +74,6 @@ public class MovementController : MonoBehaviour {
             cameraRigTransform.position += headForward * movementSpeed * Time.deltaTime;
 
         }
-
+        */
     }
 }
