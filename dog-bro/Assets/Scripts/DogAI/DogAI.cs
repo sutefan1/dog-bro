@@ -12,13 +12,20 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IWaitForSafetyState, IIn
 
     public Transform characterTransform;
     public Transform dogTransform;
+    public float movementSpeed;
 
     public bool shouldFollow 
     {
         get 
         {
-            // TODO: Check if character Transform diffeers from dog transform, and follow if it does
-            return false;
+            if (Vector3.Distance(characterTransform.position, dogTransform.position) < 0.05)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }    
     }
 
@@ -56,7 +63,8 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IWaitForSafetyState, IIn
     // Implementation of IFollowState
     public void Move()
     {
-        throw new System.NotImplementedException();
+        float step = movementSpeed * Time.deltaTime;
+        dogTransform.position = Vector3.MoveTowards(dogTransform.position, characterTransform.position, step);
     }
 
     // Implementation of IWarnState
@@ -70,6 +78,4 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IWaitForSafetyState, IIn
     {
         throw new System.NotImplementedException();
     }
-
-
 }
