@@ -53,7 +53,7 @@ public class IdleState : State<BasicAI>
         {
             owner.stateMachine.ChangeState(FollowState.Instance);
         }
-        else if (ownerWithWarningInterface != null && ownerWithWarningInterface.warnTrigger == true)
+        else if (ownerWithWarningInterface != null && ownerWithWarningInterface.dangerApparent == true)
         {
             owner.stateMachine.ChangeState(WarnState.Instance);
         } else 

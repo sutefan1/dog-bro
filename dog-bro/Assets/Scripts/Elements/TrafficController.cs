@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrafficController : MonoBehaviour
 {
-    public BoxCollider trafficCollider;
+    //public BoxCollider trafficCollider;
     public float trafficLightOnRed = 5f;
     public float trafficLightOnGreen = 10f;
     public bool startWithRedLight = true;
@@ -20,7 +20,7 @@ public class TrafficController : MonoBehaviour
         }
         set
         {
-            trafficCollider.enabled = value;
+            //trafficCollider.enabled = value;
             ground.GetComponent<Renderer>().material = value ? crosswalkRedMaterial : crosswalkGreenMaterial;
             this._isCurrentlyRed = value;
         }

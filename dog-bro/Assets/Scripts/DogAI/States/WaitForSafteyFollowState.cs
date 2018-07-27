@@ -50,10 +50,10 @@ public class WaitForSafetyFollowState : State<BasicAI>
     // -> WaitForSafetyFollowState, else
     public override void UpdateState(BasicAI owner)
     {
-        IWaitForSafetyState ownerWithWaitForSafetyInterface = owner as IWaitForSafetyState;
+        IWarnState ownerWitWarnInterface = owner as IWarnState;
         IFollowState ownerWithFollowInterface = owner as IFollowState;
 
-        if (ownerWithWaitForSafetyInterface != null && ownerWithWaitForSafetyInterface.safteyTrigger == true)
+        if (ownerWitWarnInterface != null && ownerWitWarnInterface.dangerApparent == false)
         {
             owner.stateMachine.ChangeState(IndicateSafteyFollowState.Instance);
         }

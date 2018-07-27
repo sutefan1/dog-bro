@@ -4,7 +4,7 @@ using StateNameSpace;
 interface IWarnState
 {
     void IndicateDanger();
-    bool warnTrigger { get; }
+    bool dangerApparent { get; }
 }
 
 // Requires you to implement the following interfaces on the DogAI:

@@ -8,11 +8,16 @@ public class BasicAI: MonoBehaviour {
     public StateMachine<BasicAI> stateMachine { get; set; }
 }
 
-public class DogAI : BasicAI, IFollowState, IWarnState, IWaitForSafetyState, IIndicateSafteyState {
+public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
 
     public Transform characterTransform;
     public Transform dogTransform;
     public float movementSpeed;
+
+
+    // Audio
+    public AudioSource warningBarkAudioSource;
+    public AudioSource safetyBarkAudioSource;
 
     public bool shouldFollow 
     {
@@ -29,12 +34,12 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IWaitForSafetyState, IIn
         }    
     }
 
-    private bool _warnTrigger = false;
-    public bool warnTrigger
+    private bool _dangerApparent = false;
+    public bool dangerApparent
     {
         get
         {
-            return _warnTrigger;
+            return _dangerApparent;
         }
     }
 
@@ -58,24 +63,57 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IWaitForSafetyState, IIn
         stateMachine.Update();
     }
 
+    //////////////////
+    // Collider Stuff
+    //////////////////
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleCollider(other);
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
+        HandleCollider(other);
+    }
+
+    // On Trigger Exit is not called!
+    private void OnTriggerExit(Collider other)
+    {
+        _dangerApparent = false;
+    }
+
+    private void HandleCollider(Collider other) {
+        TrafficController trafficController = other.gameObject.GetComponent<TrafficController>();
+        if (trafficController != null)
+        {
+            _dangerApparent = trafficController.isCurrentlyRed;
+        }
+    }
+
+
+    //////////////////
+    // Interface implementations
+    //////////////////
 
     // Implementation of IFollowState
     public void Move()
     {
         float step = movementSpeed * Time.deltaTime;
         dogTransform.position = Vector3.MoveTowards(dogTransform.position, characterTransform.position, step);
+        dogTransform.rotation = characterTransform.rotation;
     }
 
     // Implementation of IWarnState
     public void IndicateDanger()
     {
-        throw new System.NotImplementedException();
+        warningBarkAudioSource.Play();
+        _dangerApparent = false;
     }
 
     // Implementation of IIndicateSafteyState
     public void IndicateSafety()
     {
-        throw new System.NotImplementedException();
+        safetyBarkAudioSource.Play();
+        _safteyTrigger = false;
     }
 }

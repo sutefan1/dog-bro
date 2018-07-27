@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using StateNameSpace;
 
-interface IWaitForSafetyState
-{
-    bool safteyTrigger { get; }
-}
-
 // Requires you to implement the following interfaces on the DogAI:
 // - IWaitForSaftey
 // - IFollowState
@@ -49,10 +44,10 @@ public class WaitForSafetyState : State<BasicAI>
     // -> WaitForSafetyState, else
     public override void UpdateState(BasicAI owner)
     {
-        IWaitForSafetyState ownerWithWaitForSafetyInterface = owner as IWaitForSafetyState;
+        IWarnState ownerWithWarnInterdace = owner as IWarnState;
         IFollowState ownerWithFollowInterface = owner as IFollowState;
 
-        if(ownerWithWaitForSafetyInterface != null && ownerWithWaitForSafetyInterface.safteyTrigger == true)
+        if (ownerWithWarnInterdace != null && ownerWithWarnInterdace.dangerApparent == false)
         {
             owner.stateMachine.ChangeState(IndicateSafteyState.Instance);
         } 

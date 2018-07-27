@@ -48,7 +48,7 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(new Vector3(0, 0, -movementSpeed * Time.deltaTime));
-            transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
+            //transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
             //transform.Translate(new Vector3(0, -movementSpeed * Time.deltaTime, 0));
         }
         if (Input.GetKey(KeyCode.UpArrow))

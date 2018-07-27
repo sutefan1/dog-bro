@@ -53,14 +53,14 @@ public class FollowState : State<BasicAI>
 
     // Can change to States:
     // -> IdleState, if shouldFollow is false
-    // -> WarnFollowState, if warnTrigger is set
+    // -> WarnFollowState, if dangerApparent is true
     // -> FollowState, else
     public override void UpdateState(BasicAI owner)
     {
         IFollowState ownerWithFollowInterface = owner as IFollowState;
         IWarnState ownerWithWarningInterface = owner as IWarnState;
 
-        if (ownerWithWarningInterface != null && ownerWithWarningInterface.warnTrigger == true)
+        if (ownerWithWarningInterface != null && ownerWithWarningInterface.dangerApparent == true)
         {
             owner.stateMachine.ChangeState(WarnFollowState.Instance);
         }

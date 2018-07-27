@@ -7,7 +7,19 @@ public class GameController : MonoBehaviour {
     public TextController textController;
     public BlindController blindController;
 
+    public GameObject player;
+    public GameObject dog;
+
     bool gameFinished = false;
+
+    private void Start()
+    {
+        Collider playerCollider = player.GetComponent<Collider>();
+        Collider dogCollider = dog.GetComponent<Collider>();
+
+        Physics.IgnoreCollision(playerCollider, dogCollider);
+        //Physics.IgnoreLayerCollision(dog.layer, player.layer, true);
+    }
 
     public void GoalReached()
     {
