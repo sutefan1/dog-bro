@@ -44,29 +44,27 @@ public class GameController : MonoBehaviour
 
     /* Player Positions - checkpoints and death
      */
-    public void UpdatePlayerLastPosition(Vector3 newPosition)
+    public void UpdatePlayerStartPosition(Vector3 newPosition)
     {
         //If a checkpoint is passed, 
         //the "startPosition" variable of "GameController" is set to this position 
-        CameraPlayer.transform.position = newPosition;
         startPosition = newPosition;
     }
 
     public void ResetPlayerToLastCheckPoint()
     {
         //Go To Last CheckPoint Position
-        CameraPlayer.transform.position = this.GetPlayerLastPosition();
+        CameraPlayer.transform.position = this.GetPlayerStartPosition();
     }
 
-    public Vector3 GetPlayerLastPosition()
+    public Vector3 GetPlayerStartPosition()
     {
-        //return last position
         return startPosition;
     }
     public void OnPlayerDeath()
     {
         //On Death 
         //go to the last saved position
-        CameraPlayer.transform.position = this.GetPlayerLastPosition();
+        CameraPlayer.transform.position = this.GetPlayerStartPosition();
     }
 }

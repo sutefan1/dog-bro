@@ -95,7 +95,7 @@ public class CheckPoint : MonoBehaviour
         // If the player passes through the checkpoint, we activate it
         if (other.name == "Player")
         {
-            gameController.UpdatePlayerLastPosition(gameObject.transform.position);
+            gameController.UpdatePlayerStartPosition(gameObject.transform.position);
         }
     }
 }
