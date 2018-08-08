@@ -8,14 +8,14 @@ public class GameController : MonoBehaviour {
     public BlindController blindController;
 
     private GameObject CameraPlayer;
-    private Vector3 PlayerLastCheckPointPosition;
+    private Vector3 startPosition;
 
     bool gameFinished = false;
 
     void Start()
     {
         CameraPlayer = GameObject.Find("[CameraRig]");
-        PlayerLastCheckPointPosition = Vector3.zero;
+        startPosition = Vector3.zero;
     }
     public void GoalReached()
     {
@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour {
     }
 
 
-    /* Player Position - checkpoints and death
+    /* Player Positions - checkpoints and death
      */
     public void UpdatePlayerLastPosition(Vector3 newPosition)
     {
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour {
         //If a checkpoint is passed, 
         //the "startPosition" variable of "GameController" is set to this position 
         CameraPlayer.transform.position = newPosition;
-        PlayerLastCheckPointPosition = newPosition;
+        startPosition = newPosition;
         Debug.Log("GameController UpdatePlayerLastPosition new " + CameraPlayer.transform.position);
         Debug.Log("GameController UpdatePlayerLastPosition PlayerLastCheckPointPosition " + PlayerLastCheckPointPosition);
     }
@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour {
     public Vector3 GetPlayerLastPosition()
     {
         //return last position
-        return PlayerLastCheckPointPosition;
+        return startPosition;
     }
     public void OnPlayerDeath()
     {
