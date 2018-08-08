@@ -16,26 +16,31 @@ public class MovementController : MonoBehaviour
 
     private void OnEnable()
     {
+        /*
             controller.TriggerClicked -= HandleTriggerClicked;
            controller.TriggerClicked += HandleTriggerClicked;
 
          device = SteamVR_Controller.Input((int)controller.controllerIndex);
+         */
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
+        /*
         blindController.ToggleBlindness();
+        */
     }
 
     void FixedUpdate()
     {
+        /*
            device = SteamVR_Controller.Input((int)controller.controllerIndex);
+           */
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
         float movementSpeed = 1f;
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -55,8 +60,8 @@ public class MovementController : MonoBehaviour
         {
             transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
         }
-        */
 
+        /*
         if (blindController.IsBlind() && controller.padPressed) {
 
             float yAxis = device.GetAxis().y;
@@ -74,6 +79,7 @@ public class MovementController : MonoBehaviour
             cameraRigTransform.position += headForward * movementSpeed * Time.deltaTime;
 
         }
-        
+        */
+
     }
 }

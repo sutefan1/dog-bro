@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CheckPoint : MonoBehaviour 
+public class CheckPoint : MonoBehaviour
 {
     #region Public Variables
 
@@ -27,7 +27,7 @@ public class CheckPoint : MonoBehaviour
     #endregion
 
     #region Static Functions
-    
+
     /// <summary>
     /// Get position of the last activated checkpoint
     /// </summary>
@@ -77,38 +77,25 @@ public class CheckPoint : MonoBehaviour
     #endregion
 
 
-    GameObject CameraPlayer;
+    private GameController gameController;
 
     void Start()
     {
-
-        Debug.Log("start ");
-        CameraPlayer = GameObject.Find("[CameraRig]");
-
-
-        Debug.Log("start " + CameraPlayer.name);
-        Debug.Log("Camera object position " + CameraPlayer.transform.position );
-
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        
         thisAnimator = GetComponent<Animator>();
 
         // We search all the checkpoints in the current scene
-        CheckPointsList = GameObject.FindGameObjectsWithTag("DeathPoint");
+        //CheckPointsList = GameObject.FindGameObjectsWithTag("CheckPoint");
     }
 
     void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log("other tag " + other.tag);
+        Debug.Log("CheckPoint other name " + other.name);
         // If the player passes through the checkpoint, we activate it
-        if (other.tag == "Untagged" || other.tag == "DEATH" || other.tag == "DeathPoint")
+        if (other.name == "Player")
         {
-            Debug.Log("CameraPlayer originalPos " + CameraPlayer.transform.position);
-
-            CameraPlayer.transform.position = Vector3.zero;
-
-            Debug.Log("CameraPlayer originalPos " + CameraPlayer.transform.position);
-
-            ActivateCheckPoint();
+            gameController.UpdatePlayerLastPosition(gameObject.transform.position);
         }
     }
 }
