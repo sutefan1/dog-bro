@@ -6,28 +6,46 @@ public class GameController : MonoBehaviour {
 
     public TextController textController;
     public BlindController blindController;
+    public Transform cameraRigTransform;
 
-    bool gameFinished = false;
+    private LevelParser levelParser;
+    private int level = 1;
+
+    private Vector3 _resetPosition;
+    public Vector3 resetPosition
+    {
+        get
+        {
+            return _resetPosition;
+        }
+        set
+        {
+            _resetPosition = value;
+        }
+    }
+
+    private void Start()
+    {
+        levelParser = gameObject.GetComponent<LevelParser>();
+        LoadNextLevel();
+    }
 
     public void GoalReached()
     {
-
-        if (!gameFinished)
-        {
-            textController.ShowGoalReachedText();
-
-            if (blindController.IsBlind())
-            {
-                blindController.ToggleBlindness();
-            }
-            gameFinished = true;
-        }
-
+        cameraRigTransform.transform.position = new Vector3(100,100,100);
+        level += 1;
+        LoadNextLevel();
     }
 
-    public bool IsGameFinished()
+    private string getLevelString(int levelNumber)
     {
-        return gameFinished;
+        return "Assets/Levels/dog-bro_" + levelNumber + ".json";
     }
 
+    private void LoadNextLevel() {
+        
+        levelParser.LoadLevel(getLevelString(level));
+
+        cameraRigTransform.transform.position = _resetPosition;
+    }
 }
