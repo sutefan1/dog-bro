@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
 
     public void GoalReached()
     {
+        cameraRigTransform.transform.position = new Vector3(100,100,100);
         level += 1;
         LoadNextLevel();
     }
