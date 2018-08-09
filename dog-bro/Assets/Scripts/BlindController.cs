@@ -16,9 +16,6 @@ public class BlindController : MonoBehaviour {
 
     public void ToggleBlindness() 
     {
-
-        if (gameController.IsGameFinished()) { return; }
-
         isBlind = !isBlind;
 
         if(isBlind) {
