@@ -45,7 +45,10 @@ public class GameController : MonoBehaviour {
     private void LoadNextLevel() {
         
         levelParser.LoadLevel(getLevelString(level));
+        ResetPlayer();
+    }
 
+    public void ResetPlayer() {
         cameraRigTransform.transform.position = _resetPosition;
     }
 }
