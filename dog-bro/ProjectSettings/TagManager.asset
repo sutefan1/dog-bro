@@ -9,6 +9,7 @@ TagManager:
   - GoalTile
   - Stairs
   - TacticlePavingTile
+  - StartTile
   layers:
   - Default
   - TransparentFX
