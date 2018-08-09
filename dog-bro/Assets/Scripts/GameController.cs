@@ -7,11 +7,14 @@ public class GameController : MonoBehaviour {
     public TextController textController;
     public BlindController blindController;
 
+    private LevelParser levelParser;
+    private int level = 1;
+
     bool gameFinished = false;
 
     private void Start()
     {
-        LevelParser levelParser = gameObject.GetComponent<LevelParser>();
+        levelParser = gameObject.GetComponent<LevelParser>();
         levelParser.LoadLevel(getLevelString(1));
     }
 
