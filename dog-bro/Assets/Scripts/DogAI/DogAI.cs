@@ -8,7 +8,7 @@ public class BasicAI: MonoBehaviour {
     public StateMachine<BasicAI> stateMachine { get; set; }
 }
 
-public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
+public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState, IDangerZoneState {
 
     public Transform characterTransform;
     public Transform dogTransform;
@@ -19,7 +19,10 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
     public AudioSource warningBarkAudioSource;
     public AudioSource safetyBarkAudioSource;
 
+    public AudioSource dangerZoneBarkingAudioSource;
     public AudioSource growlAudioSource;
+
+    private float distanceForDangerZone = 1.5f;
 
     public bool shouldFollow 
     {
@@ -44,6 +47,16 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
             return _dangerApparent;
         }
     }
+
+    private bool _immediateDangerApparent = false;
+    public bool immediateDangerApparent
+    {
+        get
+        {
+            return _immediateDangerApparent;
+        }
+    }
+
 
     private bool _safteyTrigger = false;
     public bool safteyTrigger
@@ -82,13 +95,19 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
     private void OnTriggerExit(Collider other)
     {
         _dangerApparent = false;
+        _immediateDangerApparent = false;
     }
 
     private void HandleCollider(Collider other) {
         TrafficController trafficController = other.gameObject.GetComponent<TrafficController>();
+
         if (trafficController != null)
         {
             _dangerApparent = trafficController.isCurrentlyRed;
+
+            float distance = Vector3.Distance(dogTransform.position, other.transform.position);
+
+            _immediateDangerApparent = _dangerApparent && distance <= distanceForDangerZone;
         }
     }
 
@@ -110,7 +129,17 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
     {
         //warningBarkAudioSource.Play();
         growlAudioSource.Play();
-        _dangerApparent = false;
+    }
+
+    // Implementation of IDangerZoneState
+    public void IndicateImmediateDanger()
+    {
+        dangerZoneBarkingAudioSource.Play();
+    }
+
+    public void IndicateImmediateDangerIsGone()
+    {
+        dangerZoneBarkingAudioSource.Stop();
     }
 
     // Implementation of IIndicateSafteyState

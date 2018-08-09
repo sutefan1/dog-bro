@@ -31,7 +31,6 @@ public class WaitForSafetyFollowState : State<BasicAI>
 
     public override void EnterState(BasicAI owner)
     {
-        Debug.Log("State - Enter WaitForSafteyFollowState");
         IFollowState ownerWithFollowInterface = owner as IFollowState;
 
         if (ownerWithFollowInterface != null)
@@ -42,7 +41,6 @@ public class WaitForSafetyFollowState : State<BasicAI>
 
     public override void ExitState(BasicAI owner)
     {
-        Debug.Log("State - Exit WaitForSafteyFollowState");
     }
 
     // Can change to States:
@@ -52,10 +50,15 @@ public class WaitForSafetyFollowState : State<BasicAI>
     {
         IWarnState ownerWitWarnInterface = owner as IWarnState;
         IFollowState ownerWithFollowInterface = owner as IFollowState;
+        IDangerZoneState ownerWithDangerZoneInterface = owner as IDangerZoneState;
 
         if (ownerWitWarnInterface != null && ownerWitWarnInterface.dangerApparent == false)
         {
             owner.stateMachine.ChangeState(IndicateSafteyFollowState.Instance);
+        }
+        else if (ownerWithDangerZoneInterface != null && ownerWithDangerZoneInterface.immediateDangerApparent == true)
+        {
+            owner.stateMachine.ChangeState(EnterDangerZoneFollowState.Instance);
         }
         else if (ownerWithFollowInterface != null && ownerWithFollowInterface.shouldFollow == false) 
         {

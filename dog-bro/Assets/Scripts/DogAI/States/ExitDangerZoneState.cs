@@ -1,19 +1,12 @@
-﻿using UnityEngine;
-using StateNameSpace;
-
-interface IWarnState
-{
-    void IndicateDanger();
-    bool dangerApparent { get; }
-}
+﻿using StateNameSpace;
 
 // Requires you to implement the following interfaces on the DogAI:
-// - IWaitForSafetyState
-public class WarnState : State<BasicAI>
+// - IDangerZoneState
+public class ExitDangerZoneState : State<BasicAI>
 {
-    private static WarnState _instance;
+    private static ExitDangerZoneState _instance;
 
-    private WarnState()
+    private ExitDangerZoneState()
     {
         if (_instance != null)
         {
@@ -22,13 +15,13 @@ public class WarnState : State<BasicAI>
         _instance = this;
     }
 
-    public static WarnState Instance
+    public static ExitDangerZoneState Instance
     {
         get
         {
             if (_instance == null)
             {
-                new WarnState();
+                new ExitDangerZoneState();
             }
             return _instance;
         }
@@ -36,9 +29,10 @@ public class WarnState : State<BasicAI>
 
     public override void EnterState(BasicAI owner)
     {
-        IWarnState ownerWithWarningInterface = owner as IWarnState;
-        if (ownerWithWarningInterface != null) {
-            ownerWithWarningInterface.IndicateDanger();
+        IDangerZoneState ownerWithDangerZoneInterface = owner as IDangerZoneState;
+        if (ownerWithDangerZoneInterface != null)
+        {
+            ownerWithDangerZoneInterface.IndicateImmediateDangerIsGone();
         }
     }
 
@@ -47,7 +41,7 @@ public class WarnState : State<BasicAI>
     }
 
     // Can change to States:
-    // -> WaitForSafetyState
+    // -> WaitForSafteyInDangerZoneState
     public override void UpdateState(BasicAI owner)
     {
         owner.stateMachine.ChangeState(WaitForSafetyState.Instance);

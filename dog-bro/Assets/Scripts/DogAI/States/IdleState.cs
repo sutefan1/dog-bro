@@ -32,12 +32,10 @@ public class IdleState : State<BasicAI>
 
     public override void EnterState(BasicAI owner)
     {
-        Debug.Log("State - Enter Idle");
     }
 
     public override void ExitState(BasicAI owner)
     {
-        Debug.Log("State - Exit Idle");
     }
 
     // Can change to States:

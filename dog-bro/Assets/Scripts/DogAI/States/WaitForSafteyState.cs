@@ -31,12 +31,10 @@ public class WaitForSafetyState : State<BasicAI>
 
     public override void EnterState(BasicAI owner)
     {
-        Debug.Log("State - Enter WaitForSafteyState");
     }
 
     public override void ExitState(BasicAI owner)
     {
-        Debug.Log("State - Exit WaitForSafteyState");
     }
 
     // Can change to States:
@@ -46,11 +44,16 @@ public class WaitForSafetyState : State<BasicAI>
     {
         IWarnState ownerWithWarnInterdace = owner as IWarnState;
         IFollowState ownerWithFollowInterface = owner as IFollowState;
+        IDangerZoneState ownerWithDangerZoneInterface = owner as IDangerZoneState;
 
         if (ownerWithWarnInterdace != null && ownerWithWarnInterdace.dangerApparent == false)
         {
             owner.stateMachine.ChangeState(IndicateSafteyState.Instance);
-        } 
+        }
+        else if (ownerWithDangerZoneInterface != null && ownerWithDangerZoneInterface.immediateDangerApparent == true) 
+        {
+            owner.stateMachine.ChangeState(EnterDangerZoneState.Instance);
+        }
         else if(ownerWithFollowInterface != null && ownerWithFollowInterface.shouldFollow == true) 
         {
             owner.stateMachine.ChangeState(WaitForSafetyFollowState.Instance);

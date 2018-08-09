@@ -37,7 +37,6 @@ public class FollowState : State<BasicAI>
 
     public override void EnterState(BasicAI owner)
     {
-        Debug.Log("State - Enter FollowState");
         IFollowState ownerWithFollowInterface = owner as IFollowState;
 
         if(ownerWithFollowInterface != null) 
@@ -48,7 +47,6 @@ public class FollowState : State<BasicAI>
 
     public override void ExitState(BasicAI owner)
     {
-        Debug.Log("State - Exit FollowState");
     }
 
     // Can change to States:

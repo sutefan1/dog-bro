@@ -34,8 +34,6 @@ public class IndicateSafteyState : State<BasicAI>
 
     public override void EnterState(BasicAI owner)
     {
-        Debug.Log("State - Enter IndicateSafteyState");
-
         IIndicateSafteyState ownerWithIndicateSafetyInterface = owner as IIndicateSafteyState;
 
         if (ownerWithIndicateSafetyInterface != null)
@@ -47,7 +45,6 @@ public class IndicateSafteyState : State<BasicAI>
 
     public override void ExitState(BasicAI owner)
     {
-        Debug.Log("State - Exit IndicateSafteyState");
     }
 
     // Can change to States:
