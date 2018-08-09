@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
         levelParser = gameObject.GetComponent<LevelParser>();
-        levelParser.LoadLevel(getLevelString(1));
+        levelParser.LoadLevel(getLevelString(level));
     }
 
     public void GoalReached()
