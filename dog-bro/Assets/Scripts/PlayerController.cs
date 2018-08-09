@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "TrafficCollider")
+        CliffController cliffController = other.gameObject.GetComponent<CliffController>();
+        if (other.gameObject.name == "TrafficCollider" || cliffController != null)
         {
             //TODO: call the reduce health or reset to last save point function!!!
             Vector3 playerPosition = cameraRig.transform.position;
