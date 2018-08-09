@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33208450275218696}
   - component: {fileID: 65414689305141916}
   - component: {fileID: 23065789323408054}
-  - component: {fileID: 114532725081769374}
+  - component: {fileID: 114188819994658536}
   m_Layer: 0
   m_Name: RightRail
   m_TagString: Untagged
@@ -57,9 +57,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4808160804517418}
   - component: {fileID: 65606758196423664}
-  - component: {fileID: 114979222860967952}
+  - component: {fileID: 114301805972640290}
   m_Layer: 0
-  m_Name: TrafficCollider
+  m_Name: CliffCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 33759124697484022}
   - component: {fileID: 65412669230762596}
   - component: {fileID: 23067266123383904}
-  - component: {fileID: 114229092523403300}
+  - component: {fileID: 114300106520383514}
   m_Layer: 0
   m_Name: CenterRail
   m_TagString: Untagged
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4018216610217096}
   m_Layer: 0
-  m_Name: CrosswalkTile
+  m_Name: CliffTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 33347371268270566}
   - component: {fileID: 65837965127240716}
   - component: {fileID: 23677318488881262}
-  - component: {fileID: 114228301836520194}
+  - component: {fileID: 114434386362231692}
   m_Layer: 0
   m_Name: LeftRail
   m_TagString: Untagged
@@ -140,7 +140,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587771957595232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.5}
+  m_LocalPosition: {x: -1.6512915, y: 0.05, z: -1.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4657233574691122}
@@ -243,7 +243,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 37cf1919a4e71e7459f82f09a2e79e5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -275,7 +275,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 37cf1919a4e71e7459f82f09a2e79e5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -307,7 +307,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 37cf1919a4e71e7459f82f09a2e79e5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -339,7 +339,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 424d720b4848248b99a0e42f2966fc19, type: 2}
+  - {fileID: 2100000, guid: 6eacaa3bf2386fb4f9282a6c39a1afca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -446,29 +446,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114228301836520194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1948830847018808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd5987358b9d7a43afc1a58998f6df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114229092523403300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529007991194832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd5987358b9d7a43afc1a58998f6df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114532725081769374
+--- !u!114 &114188819994658536
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -476,10 +454,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169248543123634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd5987358b9d7a43afc1a58998f6df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7456eb2f100c3fa41bd5176eda83a306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114979222860967952
+--- !u!114 &114300106520383514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529007991194832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7456eb2f100c3fa41bd5176eda83a306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114301805972640290
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -487,15 +476,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221100044156112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9a549bc5bba456d85aa2d0142074ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 55143c05abadd484cb344a922d8dad28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trafficCollider: {fileID: 65606758196423664}
-  trafficLightOnRed: 5
-  trafficLightOnGreen: 10
-  startWithRedLight: 1
-  ground: {fileID: 1106237552311240}
-  crosswalkGreenMaterial: {fileID: 2100000, guid: a27958be1d22046f5b257412502551b5,
-    type: 2}
-  crosswalkRedMaterial: {fileID: 2100000, guid: 424d720b4848248b99a0e42f2966fc19,
-    type: 2}
+--- !u!114 &114434386362231692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948830847018808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7456eb2f100c3fa41bd5176eda83a306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Street
+  - CrosswalkTile
+  - GoalTile
+  - Stairs
+  - TacticlePavingTile
+  - StartTile
   - CheckPoint
-  - DeathPoint
   layers:
   - Default
   - TransparentFX

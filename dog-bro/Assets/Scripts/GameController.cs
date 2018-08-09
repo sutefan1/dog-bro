@@ -7,64 +7,61 @@ public class GameController : MonoBehaviour
 
     public TextController textController;
     public BlindController blindController;
+    public Transform cameraRigTransform;
 
     private GameObject CameraPlayer;
-    private Vector3 startPosition;
 
     bool gameFinished = false;
 
-    void Start()
-    {
-        CameraPlayer = GameObject.Find("[CameraRig]");
+    private LevelParser levelParser;
+    private int level = 1;
 
-        //Position of Starting tile
-        startPosition = Vector3.zero;
+    private Vector3 _resetPosition;
+    public Vector3 resetPosition
+    {
+        get
+        {
+            return _resetPosition;
+        }
+        set
+        {
+            _resetPosition = value;
+        }
     }
+
+    private void Start()
+    {
+        levelParser = gameObject.GetComponent<LevelParser>();
+        LoadNextLevel();
+    }
+
     public void GoalReached()
     {
-
-        if (!gameFinished)
-        {
-            textController.ShowGoalReachedText();
-
-            if (blindController.IsBlind())
-            {
-                blindController.ToggleBlindness();
-            }
-            gameFinished = true;
-        }
-
+        cameraRigTransform.transform.position = new Vector3(100,100,100);
+        level += 1;
+        LoadNextLevel();
     }
 
-    public bool IsGameFinished()
+    private string getLevelString(int levelNumber)
     {
-        return gameFinished;
+        return "Assets/Levels/dog-bro_" + levelNumber + ".json";
     }
 
-
-    /* Player Positions - checkpoints and death
-     */
-    public void SetStartPosition(Vector3 newPosition)
-    {
-        //If a checkpoint is passed, 
-        //the "startPosition" variable of "GameController" is set to this position 
-        startPosition = newPosition;
-    }
-
-    public Vector3 GetStartPosition()
-    {
-        return startPosition;
-    }
-    public void ResetPlayerToLastCheckPoint()
-    {
-        //Go To Last CheckPoint Position
-        CameraPlayer.transform.position = this.GetStartPosition();
-    }
 
     public void OnPlayerDeath()
     {
         //On Death 
         //go to the last saved position
-        this.ResetPlayerToLastCheckPoint();
+        ResetPlayer();
+    }
+
+    private void LoadNextLevel() {
+        
+        levelParser.LoadLevel(getLevelString(level));
+        ResetPlayer();
+    }
+
+    public void ResetPlayer() {
+        cameraRigTransform.transform.position = _resetPosition;
     }
 }
