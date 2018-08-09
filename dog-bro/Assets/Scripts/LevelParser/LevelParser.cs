@@ -1,35 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelParserGUI : MonoBehaviour {
+public class LevelParser : MonoBehaviour {
 
     public GameObject level;
 
-    private void OnGUI()
-    {
-        if(GUI.Button(new Rect(10, 10, 100, 20), "Load Level"))
-        {
-            string path = EditorUtility.OpenFilePanel("Select Level File", "Levels", "json");
-            print("Load path: " + path);
-
-            if(path != "")
-                LoadLevel(path);
-        }
-
-        if (GUI.Button(new Rect(120, 10, 100, 20), "Save Level"))
-        {
-            string path = EditorUtility.SaveFilePanel("Select Level File", "Levels", "dog-bro", "json");
-            print("Save path: " + path);
-
-            if (path != "")
-                SaveLevel(path);
-        }
-    }
-
-    private void LoadLevel(string path)
+    public void LoadLevel(string path)
     {
         ResetLevel();
 
@@ -65,11 +44,11 @@ public class LevelParserGUI : MonoBehaviour {
         gameObject = Instantiate(Resources.Load("Street")) as GameObject;
         gameObject.transform.parent = level.transform;
 
-        gameObject.transform.localScale = new Vector3(maxX - minX + 2, 0.5f, maxZ - minZ + 2);
+        gameObject.transform.localScale = new Vector3(maxX - minX + 5, 0.5f, maxZ - minZ + 5);
         gameObject.transform.position = new Vector3((maxX + minX) / 2, -0.25f, (maxZ + minZ) / 2);
     }
 
-    private void ResetLevel()
+    public void ResetLevel()
     {
         foreach (Transform child in level.transform)
         {
@@ -77,13 +56,13 @@ public class LevelParserGUI : MonoBehaviour {
         }
     }
 
-    private void SaveLevel(string path)
+    public void SaveLevel(string path)
     {
         List<Tile> tiles = new List<Tile>();
 
         foreach (Transform child in level.transform)
         {
-            if (child.gameObject.tag != "Street")
+            if (child.gameObject.tag != "Street" && child.gameObject.tag != "Untagged")
             {
                 Tile tile = new Tile();
                 tile.name = child.gameObject.tag;

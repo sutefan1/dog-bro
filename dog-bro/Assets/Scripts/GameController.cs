@@ -9,6 +9,12 @@ public class GameController : MonoBehaviour {
 
     bool gameFinished = false;
 
+    private void Start()
+    {
+        LevelParser levelParser = gameObject.GetComponent<LevelParser>();
+        levelParser.LoadLevel(getLevelString(1));
+    }
+
     public void GoalReached()
     {
 
@@ -28,6 +34,11 @@ public class GameController : MonoBehaviour {
     public bool IsGameFinished()
     {
         return gameFinished;
+    }
+
+    private string getLevelString(int level)
+    {
+        return "Assets/Levels/dog-bro_" + level + ".json";
     }
 
 }
