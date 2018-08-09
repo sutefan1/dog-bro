@@ -19,6 +19,8 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
     public AudioSource warningBarkAudioSource;
     public AudioSource safetyBarkAudioSource;
 
+    public AudioSource growlAudioSource;
+
     public bool shouldFollow 
     {
         get 
@@ -106,7 +108,8 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
     // Implementation of IWarnState
     public void IndicateDanger()
     {
-        warningBarkAudioSource.Play();
+        //warningBarkAudioSource.Play();
+        growlAudioSource.Play();
         _dangerApparent = false;
     }
 
@@ -114,6 +117,7 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState {
     public void IndicateSafety()
     {
         safetyBarkAudioSource.Play();
+        growlAudioSource.Stop();
         _safteyTrigger = false;
     }
 }
