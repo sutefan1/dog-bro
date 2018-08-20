@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     {
         CliffController cliffController = other.gameObject.GetComponent<CliffController>();
         TrafficController trafficController = other.gameObject.GetComponent<TrafficController>();
-        if (cliffController != null || trafficController != null)
+        if (cliffController != null || (trafficController != null && trafficController.isCurrentlyRed))
         {
             gameController.ResetPlayer();
         }
