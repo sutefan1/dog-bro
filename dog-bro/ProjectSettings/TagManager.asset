@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Street
+  - CrosswalkTile
+  - GoalTile
+  - Stairs
+  - TacticlePavingTile
+  - StartTile
+  - CheckPoint
+  - FxTemporaire
+  - ExcludeTeleport
+  - projectile
+  - TeleportIgnore
+  - CliffTile
+  - Ground
   layers:
   - Default
   - TransparentFX
