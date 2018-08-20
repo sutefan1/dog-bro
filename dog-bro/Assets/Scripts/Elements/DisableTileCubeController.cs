@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
+public class DisableTileCubeController : MonoBehaviour {
     private GameController gameController;
-    
-
-	// Use this for initialization
-	void Start () {
+    public Transform head;
+    // Use this for initialization
+    void Start () {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-        
+
     private void OnTriggerEnter(Collider other)
     {
-        CliffController cliffController = other.gameObject.GetComponent<CliffController>();
-        if (other.gameObject.name == "TrafficCollider" || cliffController != null)
+        if (other.gameObject.tag == "Ground")
         {
-            gameController.ResetPlayer();
+            gameController.AddTactilePavingToDisable(other.gameObject.transform.parent.gameObject);
         }
-        
     }
 }

@@ -11,6 +11,12 @@ TagManager:
   - TacticlePavingTile
   - StartTile
   - CheckPoint
+  - FxTemporaire
+  - ExcludeTeleport
+  - projectile
+  - TeleportIgnore
+  - CliffTile
+  - Ground
   layers:
   - Default
   - TransparentFX

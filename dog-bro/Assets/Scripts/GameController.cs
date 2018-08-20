@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
 
     private GameObject CameraPlayer;
 
+    private List<GameObject> disabledTiles  = new List<GameObject>();
+
     bool gameFinished = false;
 
     private LevelParser levelParser;
@@ -26,6 +28,7 @@ public class GameController : MonoBehaviour
         set
         {
             _resetPosition = value;
+            disabledTiles.Clear();
         }
     }
 
@@ -54,6 +57,11 @@ public class GameController : MonoBehaviour
         //go to the last saved position
         ResetPlayer();
     }
+    public void AddTactilePavingToDisable(GameObject parentTile)
+    {
+        parentTile.SetActive(false);
+        disabledTiles.Add(parentTile);
+    }
 
     private void LoadNextLevel() {
         
@@ -62,6 +70,12 @@ public class GameController : MonoBehaviour
     }
 
     public void ResetPlayer() {
+        foreach(GameObject tile in disabledTiles)
+        {
+            tile.SetActive(true);
+        }
+        disabledTiles.Clear();
         cameraRigTransform.transform.position = _resetPosition;
+
     }
 }
