@@ -7,6 +7,8 @@ public class LevelParser : MonoBehaviour {
 
     public GameObject level;
 
+    public float levelPadding;
+
     public void LoadLevel(string path)
     {
         ResetLevel();
@@ -39,14 +41,32 @@ public class LevelParser : MonoBehaviour {
             if (tileGameObject.transform.position.z < minZ)
                 minZ = tileGameObject.transform.position.z;
             if (tile.name == "StartTile")
-                this.gameObject.GetComponent<GameController>().resetPosition = new Vector3(tile.posX, 0, tile.posZ);
+                gameObject.GetComponent<GameController>().resetPosition = new Vector3(tile.posX, 0, tile.posZ);
         }
 
         tileGameObject = Instantiate(Resources.Load("Street")) as GameObject;
         tileGameObject.transform.parent = level.transform;
 
-        tileGameObject.transform.localScale = new Vector3(maxX - minX + 5, 0.5f, maxZ - minZ + 5);
+        tileGameObject.transform.localScale = new Vector3(maxX - minX + levelPadding, 0.5f, maxZ - minZ + levelPadding);
         tileGameObject.transform.position = new Vector3((maxX + minX) / 2, -0.25f, (maxZ + minZ) / 2);
+
+        for (float i = minX - levelPadding / 2 + 0.25f; i <= maxX + levelPadding / 2 - 0.25f; i += 0.5f)
+        {
+            tileGameObject = Instantiate(Resources.Load("CliffTile"), new Vector3(i, 0f, minZ - levelPadding / 2 + 0.25f), Quaternion.Euler(new Vector3(0f, 90f, 0f))) as GameObject;
+            tileGameObject.transform.parent = level.transform;
+
+            tileGameObject = Instantiate(Resources.Load("CliffTile"), new Vector3(i, 0f, maxZ + levelPadding / 2 - 0.25f), Quaternion.Euler(new Vector3(0f, 90f, 0f))) as GameObject;
+            tileGameObject.transform.parent = level.transform;
+        }
+        
+        for (float i = minZ - levelPadding / 2 + 0.75f; i <= maxZ + levelPadding / 2 - 0.75f; i += 0.5f)
+        {
+            tileGameObject = Instantiate(Resources.Load("CliffTile"), new Vector3(minX - levelPadding / 2 + 0.25f, 0f, i), Quaternion.Euler(new Vector3(0f, 0f, 0f))) as GameObject;
+            tileGameObject.transform.parent = level.transform;
+
+            tileGameObject = Instantiate(Resources.Load("CliffTile"), new Vector3(maxX + levelPadding / 2 - 0.25f, 0f, i), Quaternion.Euler(new Vector3(0f, 0f, 0f))) as GameObject;
+            tileGameObject.transform.parent = level.transform;
+        }
     }
 
     public void ResetLevel()
