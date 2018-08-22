@@ -22,10 +22,10 @@ public class LevelParser : MonoBehaviour {
 
         List<Tile> tiles = JsonConvert.DeserializeObject<List<Tile>>(json);
 
-        float maxX = 0;
-        float minX = 0;
-        float maxZ = 0;
-        float minZ = 0;
+        float maxX = -1000;
+        float minX = 1000;
+        float maxZ = -1000;
+        float minZ = 1000;
         GameObject tileGameObject;
         foreach (Tile tile in tiles)
         {
@@ -83,7 +83,8 @@ public class LevelParser : MonoBehaviour {
 
         foreach (Transform child in level.transform)
         {
-            if (child.gameObject.tag != "Street" && child.gameObject.tag != "Untagged")
+            if (child.gameObject.tag != "Street" && child.gameObject.tag != "Untagged"
+                && child.gameObject.tag != "CliffTile")
             {
                 Tile tile = new Tile();
                 tile.name = child.gameObject.tag;
