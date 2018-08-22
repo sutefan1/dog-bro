@@ -6,13 +6,17 @@ public class MovementController : MonoBehaviour
 {
 
     public SteamVR_TrackedController controller;
-    public BlindController blindController;
 
     public Transform cameraRigTransform;
     public Transform headTransform;
 
     private SteamVR_Controller.Device device;
+    private GameController gameController;
 
+    private void Start()
+    {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+    }
 
     private void OnEnable()
     {
@@ -24,7 +28,7 @@ public class MovementController : MonoBehaviour
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
-        blindController.ToggleBlindness();
+        gameController.RightTriggerClicked();
     }
 
     void FixedUpdate()
@@ -54,6 +58,10 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             cameraRigTransform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            gameController.RightTriggerClicked();
         }
 
         /*

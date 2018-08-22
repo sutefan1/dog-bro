@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public GameObject dog;
 
-    bool gameFinished = false;
+    bool levelFinished = false;
 
     private LevelParser levelParser;
     private int level = 1;
@@ -50,7 +50,20 @@ public class GameController : MonoBehaviour
     {
         cameraRigTransform.transform.position = new Vector3(100,100,100);
         level += 1;
-        LoadNextLevel();
+        levelFinished = true;
+    }
+
+    public void RightTriggerClicked()
+    {
+        if (levelFinished == true)
+        {
+            LoadNextLevel();
+            levelFinished = false;
+        }
+        else
+        {
+            blindController.ToggleBlindness();
+        }
     }
 
     private string getLevelString(int levelNumber)
