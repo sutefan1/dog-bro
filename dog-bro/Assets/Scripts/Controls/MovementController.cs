@@ -20,8 +20,8 @@ public class MovementController : MonoBehaviour
 
     private void OnEnable()
     {
-        //controller.TriggerClicked -= HandleTriggerClicked;
-        //controller.TriggerClicked += HandleTriggerClicked;
+        controller.TriggerClicked -= HandleTriggerClicked;
+        controller.TriggerClicked += HandleTriggerClicked;
 
         device = SteamVR_Controller.Input((int)controller.controllerIndex);
     }
