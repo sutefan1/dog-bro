@@ -58,6 +58,11 @@ public class GameController : MonoBehaviour
         return "Assets/Levels/dog-bro_" + levelNumber + ".json";
     }
 
+    public int getLevel()
+    {
+        return level;
+    }
+
 
     public void OnPlayerDeath()
     {
