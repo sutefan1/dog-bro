@@ -97,6 +97,7 @@ public class GameController : MonoBehaviour
         }
         disabledTiles.Clear();
         cameraRigTransform.transform.position = _resetPosition;
+        dog.gameObject.transform.position = _resetPosition;
 
     }
 }
