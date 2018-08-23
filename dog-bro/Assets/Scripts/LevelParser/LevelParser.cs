@@ -7,7 +7,12 @@ public class LevelParser : MonoBehaviour {
 
     public GameObject level;
 
-    public float levelPadding;
+    public float levelPadding = 3;
+
+    private void OnValidate()
+    {
+        levelPadding = Mathf.Max(levelPadding, 3);
+    }
 
     public void LoadLevel(string path)
     {
