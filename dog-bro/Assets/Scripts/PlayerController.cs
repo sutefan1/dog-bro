@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    private AudioSource walkingAudioSource;
     private GameController gameController;
-    
 
 	// Use this for initialization
 	void Start () {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
-	}
+        walkingAudioSource = gameObject.GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-        
+
+    public void CharacterIsMoving(bool isMoving) {
+
+        if (isMoving && !walkingAudioSource.isPlaying) {
+            walkingAudioSource.Play();
+        } else if(!isMoving && walkingAudioSource.isPlaying)
+        {
+            walkingAudioSource.Stop();
+        }
+
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         CliffController cliffController = other.gameObject.GetComponent<CliffController>();

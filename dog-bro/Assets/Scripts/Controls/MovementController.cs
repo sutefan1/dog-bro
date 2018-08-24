@@ -12,10 +12,12 @@ public class MovementController : MonoBehaviour
 
     private SteamVR_Controller.Device device;
     private GameController gameController;
+    private PlayerController playerController;
 
     private void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     private void OnEnable()
@@ -39,37 +41,39 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         float movementSpeed = 1f;
+
+        bool characterHasMoved = false;
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             cameraRigTransform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
+            characterHasMoved = true;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             cameraRigTransform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
+            characterHasMoved = true;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             cameraRigTransform.Translate(new Vector3(0, 0, -movementSpeed * Time.deltaTime));
-            //transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
-            //transform.Translate(new Vector3(0, -movementSpeed * Time.deltaTime, 0));
+            characterHasMoved = true;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             cameraRigTransform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
+            characterHasMoved = true;
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
             gameController.RightTriggerClicked();
         }
 
-        /*
+        
         if (controller.padPressed) {
 
             float yAxis = device.GetAxis().y;
-
-            float movementSpeed = 1f;
 
             if(yAxis < -0.5)
             {
@@ -80,8 +84,10 @@ public class MovementController : MonoBehaviour
             headForward.y = 0;
 
             cameraRigTransform.position += headForward * movementSpeed * Time.deltaTime;
+            characterHasMoved = true;
+        }
 
-        }*/
+        playerController.CharacterIsMoving(characterHasMoved);
         
     }
 }
