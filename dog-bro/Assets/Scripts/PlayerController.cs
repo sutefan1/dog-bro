@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour {
         {
             walkingAudioSource.Stop();
         }
-
     }
 
 
