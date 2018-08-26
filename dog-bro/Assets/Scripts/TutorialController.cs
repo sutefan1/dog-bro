@@ -6,7 +6,6 @@ public class TutorialController : MonoBehaviour
 {
     private GameController gameController;
     public AudioSource tutorialAudio;
-    public AudioSource objectAudio;
 
     void Start()
     {
