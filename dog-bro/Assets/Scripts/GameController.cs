@@ -35,6 +35,20 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private bool _isIntroPlaying = false;
+    public bool isIntroPlaying
+    {
+        get
+        {
+            return _isIntroPlaying;
+        }
+        set
+        {
+            _isIntroPlaying = value;
+        }
+    }
+    AudioSource audioTutorial;
+
     private void Start()
     {
         levelParser = gameObject.GetComponent<LevelParser>();
@@ -88,7 +102,49 @@ public class GameController : MonoBehaviour
         
         levelParser.LoadLevel(getLevelString(level));
         ResetPlayer();
+
+        PlayTutorialAudios();
     }
+    void PlayTutorialAudios()
+    {
+        if (level == 1)
+        {
+            isIntroPlaying = true;
+            List<string> intoAudios1 = new List<string>();
+            intoAudios1.Add("track01Intro");
+            intoAudios1.Add("track02Intro");
+            StartCoroutine(playIntroSound(intoAudios1));
+        } else if (level == 3) {
+            isIntroPlaying = true;
+            List<string> intoAudios1 = new List<string>();
+            intoAudios1.Add("track03IntroDog");
+            StartCoroutine(playIntroSound(intoAudios1));
+        }
+    }
+    IEnumerator playIntroSound(List<string> audios )
+    {
+        foreach (string s in audios) {
+
+            audioTutorial = gameObject.AddComponent<AudioSource>();
+            audioTutorial.PlayOneShot((AudioClip)Resources.Load(s ));
+            //length of audio1 - wait for it
+            if (audios.Count > 1)
+            {
+                yield return new WaitForSeconds(20);
+            }
+        }
+    }
+    void Update()
+    {
+        if (audioTutorial != null && audioTutorial.isPlaying)
+        {
+            isIntroPlaying = true;
+        }
+        else {
+            isIntroPlaying = false;
+        }
+    }
+
 
     public void ResetPlayer() {
         foreach(GameObject tile in disabledTiles)
@@ -99,5 +155,9 @@ public class GameController : MonoBehaviour
         cameraRigTransform.transform.position = _resetPosition;
         dog.gameObject.transform.position = _resetPosition;
 
+    }
+    public int GetLevel()
+    {
+        return level;
     }
 }

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GoalTileController : TactileController {
 
+    public AudioSource objectAudio;
+
+    void Start()
+    {
+        objectAudio = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // TODO: Notify that the goal has been reached
@@ -18,6 +25,10 @@ public class GoalTileController : TactileController {
             Debug.Log("Goal Reached!");
 
             gameController.GoalReached();
+
+            if (objectAudio != null) {
+                objectAudio.Play();
+            }
         }
     }
 }
