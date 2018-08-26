@@ -41,6 +41,14 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameController.isIntroPlaying)
+        {
+            this.enabled = false;
+        }
+        else {
+            this.enabled = true;
+        }
+
         float movementSpeed = 1f;
 
         bool characterHasMoved = false;
