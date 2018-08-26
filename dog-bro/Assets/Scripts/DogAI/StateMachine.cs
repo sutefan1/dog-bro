@@ -26,7 +26,6 @@ namespace StateNameSpace
 
         public void Update() {
             currentState.UpdateState(Owner);
-            Debug.Log("Current State: " + currentState.ToString());
         }
 
         // Call me only when the character got reset
