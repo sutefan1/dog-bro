@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 82001318337733904}
   - component: {fileID: 82623351728278996}
   m_Layer: 0
-  m_Name: GoalTile(Clone)
+  m_Name: GoalTile
   m_TagString: GoalTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

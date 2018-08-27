@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
             intoAudios1.Add("track01Intro");
             intoAudios1.Add("track02Intro");
             StartCoroutine(playIntroSound(intoAudios1));
-        } else if (level == 3) {
+        } else if (level == 4) {
             isIntroPlaying = true;
             List<string> intoAudios1 = new List<string>();
             intoAudios1.Add("track03IntroDog");
