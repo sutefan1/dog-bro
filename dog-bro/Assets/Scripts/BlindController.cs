@@ -7,11 +7,12 @@ public class BlindController : MonoBehaviour {
     private GameController gameController;
 
     private float _fadeDuration = 1f;
-    private bool isBlind;
+    private bool isBlind = true;
 
     void Start()
     {
-         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        SteamVR_Fade.Start(Color.black, 0, true);
     }
 
     public void ToggleBlindness() 

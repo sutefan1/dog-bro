@@ -9,17 +9,19 @@ public class GameController : MonoBehaviour
     public BlindController blindController;
     public Transform cameraRigTransform;
 
-    private GameObject CameraPlayer;
-
     private List<GameObject> disabledTiles  = new List<GameObject>();
 
     public GameObject player;
     public GameObject dog;
 
-    bool levelFinished = false;
+    public bool levelFinished = false;
 
     private LevelParser levelParser;
     private int level = 1;
+    private PlayerController playerController;
+
+    private AudioSource audioTutorialPlayer;
+    bool movementAudioHasBeenPlayed = false;
 
     private Vector3 _resetPosition;
     public Vector3 resetPosition
@@ -47,7 +49,12 @@ public class GameController : MonoBehaviour
             _isIntroPlaying = value;
         }
     }
-    AudioSource audioTutorial;
+
+    private void Awake()
+    {
+        audioTutorialPlayer = gameObject.AddComponent<AudioSource>();
+        audioTutorialPlayer.volume = 0.1f; // Because otherwise you wouldn't hear the walking
+    }
 
     private void Start()
     {
@@ -58,6 +65,7 @@ public class GameController : MonoBehaviour
         Collider dogCollider = dog.GetComponent<Collider>();
         
         Physics.IgnoreCollision(playerCollider, dogCollider);
+        playerController = player.GetComponent<PlayerController>();
     }
 
     public void GoalReached()
@@ -103,46 +111,52 @@ public class GameController : MonoBehaviour
         levelParser.LoadLevel(getLevelString(level));
         ResetPlayer();
 
-        PlayTutorialAudios();
+        TryPlayingNextIntroAudio();
     }
-    void PlayTutorialAudios()
-    {
+
+    void TryPlayingNextIntroAudio() {
         if (level == 1)
         {
-            isIntroPlaying = true;
-            List<string> intoAudios1 = new List<string>();
-            intoAudios1.Add("track01Intro");
-            intoAudios1.Add("track02Intro");
-            StartCoroutine(playIntroSound(intoAudios1));
-        } else if (level == 4) {
-            isIntroPlaying = true;
-            List<string> intoAudios1 = new List<string>();
-            intoAudios1.Add("track03IntroDog");
-            StartCoroutine(playIntroSound(intoAudios1));
+            PlayAudio("Audio/track01Intro");
+        }
+        else if (level == 4)
+        {
+            PlayAudio("Audio/track03IntroDog");
+        } else if(level == 5) 
+        {
+            PlayAudio("Audio/track04TutorialEndGameStart");
         }
     }
-    IEnumerator playIntroSound(List<string> audios )
-    {
-        foreach (string s in audios) {
 
-            audioTutorial = gameObject.AddComponent<AudioSource>();
-            audioTutorial.PlayOneShot((AudioClip)Resources.Load(s ));
-            //length of audio1 - wait for it
-            if (audios.Count > 1)
-            {
-                yield return new WaitForSeconds(20);
-            }
+    void PlayAudio(string fileName)
+    {
+        if(fileName != null) {
+            isIntroPlaying = true;
+            audioTutorialPlayer.PlayOneShot((AudioClip)Resources.Load(fileName));
         }
     }
+
+    void TryPlayingMovementAudio() {
+
+        if (!movementAudioHasBeenPlayed && level == 1 && isIntroPlaying == false && playerController.isMoving) {
+            movementAudioHasBeenPlayed = true;
+            PlayAudio("Audio/track02Intro");
+        }
+
+    }
+
     void Update()
     {
-        if (audioTutorial != null && audioTutorial.isPlaying)
+        if (audioTutorialPlayer != null && audioTutorialPlayer.isPlaying)
         {
             isIntroPlaying = true;
         }
-        else {
+        else
+        {
             isIntroPlaying = false;
         }
+
+        TryPlayingMovementAudio();
     }
 
 

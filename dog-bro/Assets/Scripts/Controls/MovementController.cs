@@ -44,6 +44,7 @@ public class MovementController : MonoBehaviour
         //Disable player movement when the Audio is playing
         if (gameController.isIntroPlaying)
         {
+            playerController.CharacterIsMoving(false);
             return;
         }
 
@@ -81,10 +82,8 @@ public class MovementController : MonoBehaviour
 
             float yAxis = device.GetAxis().y;
 
-            if(yAxis < -0.5)
-            {
-                movementSpeed *= -1;
-            }
+            // I would remove this, because we never explain that you can move backward!
+            //if(yAxis < -0.5) { movementSpeed *= -1; }
 
             Vector3 headForward = headTransform.forward;
             headForward.y = 0;
@@ -93,7 +92,8 @@ public class MovementController : MonoBehaviour
             characterHasMoved = true;
         }
 
+        characterHasMoved = characterHasMoved && !gameController.levelFinished;
+
         playerController.CharacterIsMoving(characterHasMoved);
-        
     }
 }

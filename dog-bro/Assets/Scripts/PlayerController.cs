@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour {
     private AudioSource walkingAudioSource;
     private GameController gameController;
 
+    private bool _isMoving;
+    public bool isMoving {
+        get { return _isMoving;}
+    }
+
 	// Use this for initialization
 	void Start () {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
@@ -26,6 +31,8 @@ public class PlayerController : MonoBehaviour {
         {
             walkingAudioSource.Stop();
         }
+
+        _isMoving = isMoving;
     }
 
 
