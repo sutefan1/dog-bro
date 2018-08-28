@@ -57,8 +57,8 @@ public class GoalTileController : TactileController {
         audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/track04TutorialEndGameStart"));
         yield return new WaitForSeconds(12);
         //TODO: Uncomment this section if the sound is recorded and added to the resource folder!!!
-        //audioGameGoal = gameObject.AddComponent<AudioSource>();
-        //audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/PressTriggerToContinue"));
+        audioGameGoal = gameObject.AddComponent<AudioSource>();
+        audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/PressTriggerToContinue"));
     }
 
     IEnumerator playLevelFinishedSound()
@@ -66,7 +66,7 @@ public class GoalTileController : TactileController {
         audioGameGoal = gameObject.AddComponent<AudioSource>();
         audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/GoalTileAudio"));
         yield return new WaitForSeconds(4);
-        //audioGameGoal = gameObject.AddComponent<AudioSource>();
-        //audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/PressTriggerToContinue"));
+        audioGameGoal = gameObject.AddComponent<AudioSource>();
+        audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/PressTriggerToContinue"));
     }
 }
