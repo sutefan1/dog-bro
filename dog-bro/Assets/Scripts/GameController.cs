@@ -104,6 +104,7 @@ public class GameController : MonoBehaviour
     {
         //On Death 
         //go to the last saved position
+        PlayAudio("Audio/ResetAudio");
         ResetPlayer();
     }
     public void AddTactilePavingToDisable(GameObject parentTile)
@@ -187,8 +188,7 @@ public class GameController : MonoBehaviour
 
     public void PlayCliffResetAudio() 
     {
-        // TODO!!!
-
+        PlayAudio("Audio/ResetAudio");
     }
 
     public void PlayTrafficResetAudio() 

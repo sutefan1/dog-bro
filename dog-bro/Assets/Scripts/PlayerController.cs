@@ -40,15 +40,14 @@ public class PlayerController : MonoBehaviour {
     {
         CliffController cliffController = other.gameObject.GetComponent<CliffController>();
         TrafficController trafficController = other.gameObject.GetComponent<TrafficController>();
-        if (cliffController != null || (trafficController != null && trafficController.isCurrentlyRed))
+        if (cliffController != null)
         {
+            gameController.PlayCliffResetAudio();
             gameController.ResetPlayer();
         }
-
-        if(cliffController != null) {
-            gameController.PlayCliffResetAudio();
-        } else if (trafficController != null) {
+        else if (trafficController != null && trafficController.isCurrentlyRed) {
             gameController.PlayTrafficResetAudio();
+            gameController.ResetPlayer();
         }
     }
 }

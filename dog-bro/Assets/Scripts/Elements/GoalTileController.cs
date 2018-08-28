@@ -37,13 +37,12 @@ public class GoalTileController : TactileController {
                 else if (gameController.GetLevel() == 10)
                 {
                     audioGameGoal = gameObject.AddComponent<AudioSource>();
-                    audioGameGoal.PlayOneShot((AudioClip)Resources.Load("track05GameEndHomeReached"));
+                    audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/track05GameEndHomeReached"));
                 }
                 //Go To Next Level Press Key Audio
                 else
                 {
-                    audioGameGoal = gameObject.AddComponent<AudioSource>();
-                    audioGameGoal.PlayOneShot((AudioClip)Resources.Load("GoalTileAudio"));
+                    StartCoroutine(playLevelFinishedSound());
                 }
             }
 
@@ -55,9 +54,19 @@ public class GoalTileController : TactileController {
     IEnumerator playIntroSound()
     {
         audioGameGoal = gameObject.AddComponent<AudioSource>();
-        audioGameGoal.PlayOneShot((AudioClip)Resources.Load("track04TutorialEndGameStart"));
+        audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/track04TutorialEndGameStart"));
         yield return new WaitForSeconds(12);
+        //TODO: Uncomment this section if the sound is recorded and added to the resource folder!!!
+        //audioGameGoal = gameObject.AddComponent<AudioSource>();
+        //audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/PressTriggerToContinue"));
+    }
+
+    IEnumerator playLevelFinishedSound()
+    {
         audioGameGoal = gameObject.AddComponent<AudioSource>();
-        audioGameGoal.PlayOneShot((AudioClip)Resources.Load("GoalTileAudio"));
+        audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/GoalTileAudio"));
+        yield return new WaitForSeconds(4);
+        //audioGameGoal = gameObject.AddComponent<AudioSource>();
+        //audioGameGoal.PlayOneShot((AudioClip)Resources.Load("Audio/PressTriggerToContinue"));
     }
 }
