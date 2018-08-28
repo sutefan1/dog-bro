@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour {
         {
             gameController.ResetPlayer();
         }
-        
+
+        if(cliffController != null) {
+            gameController.PlayCliffResetAudio();
+        } else if (trafficController != null) {
+            gameController.PlayTrafficResetAudio();
+        }
     }
 }

@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
 
         if (level == 11) {
             gameFinished = true;
-            PlayAudio("Audio/track05GameEndHomeReached");
+            PlayOutroAudio();
         }
     }
 
@@ -121,37 +121,6 @@ public class GameController : MonoBehaviour
         TryPlayingNextIntroAudio();
     }
 
-    void TryPlayingNextIntroAudio() {
-        if (level == 1)
-        {
-            PlayAudio("Audio/track01Intro");
-        }
-        else if (level == 4)
-        {
-            PlayAudio("Audio/track03IntroDog");
-        } else if(level == 5) 
-        {
-            PlayAudio("Audio/track04TutorialEndGameStart");
-        }
-    }
-
-    void PlayAudio(string fileName)
-    {
-        if(fileName != null) {
-            isIntroPlaying = true;
-            audioTutorialPlayer.PlayOneShot((AudioClip)Resources.Load(fileName));
-        }
-    }
-
-    void TryPlayingMovementAudio() {
-
-        if (!movementAudioHasBeenPlayed && level == 1 && isIntroPlaying == false && playerController.isMoving) {
-            movementAudioHasBeenPlayed = true;
-            PlayAudio("Audio/track02Intro");
-        }
-
-    }
-
     void Update()
     {
         if (audioTutorialPlayer != null && audioTutorialPlayer.isPlaying)
@@ -181,4 +150,60 @@ public class GameController : MonoBehaviour
     {
         return level;
     }
+
+
+    // MARK: Audio Stuff
+
+    void TryPlayingNextIntroAudio()
+    {
+        if (level == 1)
+        {
+            PlayAudio("Audio/track01Intro");
+        }
+        else if (level == 4)
+        {
+            PlayAudio("Audio/track03IntroDog");
+        }
+        else if (level == 5)
+        {
+            PlayAudio("Audio/track04TutorialEndGameStart");
+        }
+    }
+
+    void TryPlayingMovementAudio()
+    {
+
+        if (!movementAudioHasBeenPlayed && level == 1 && isIntroPlaying == false && playerController.isMoving)
+        {
+            movementAudioHasBeenPlayed = true;
+            PlayAudio("Audio/track02Intro");
+        }
+    }
+
+    void PlayOutroAudio() 
+    {
+        PlayAudio("Audio/track05GameEndHomeReached");
+    }
+
+    public void PlayCliffResetAudio() 
+    {
+        // TODO!!!
+
+    }
+
+    public void PlayTrafficResetAudio() 
+    {
+        // TODO!!!!
+    }
+
+    void PlayAudio(string fileName)
+    {
+        if (fileName != null)
+        {
+            isIntroPlaying = true;
+            audioTutorialPlayer.PlayOneShot((AudioClip)Resources.Load(fileName));
+        }
+    }
+
+
 }
