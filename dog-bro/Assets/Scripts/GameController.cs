@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject dog;
 
     public bool levelFinished = false;
+    private bool gameFinished = false;
 
     private LevelParser levelParser;
     private int level = 1;
@@ -70,14 +71,19 @@ public class GameController : MonoBehaviour
 
     public void GoalReached()
     {
-        cameraRigTransform.transform.position = new Vector3(100,100,100);
+        cameraRigTransform.transform.position = new Vector3(100, 100, 100);
         level += 1;
         levelFinished = true;
+
+        if (level == 11) {
+            gameFinished = true;
+            PlayAudio("Audio/track05GameEndHomeReached");
+        }
     }
 
     public void RightTriggerClicked()
     {
-        if (levelFinished == true)
+        if (levelFinished == true && !gameFinished)
         {
             LoadNextLevel();
             levelFinished = false;
@@ -107,9 +113,10 @@ public class GameController : MonoBehaviour
     }
 
     private void LoadNextLevel() {
-        
+
         levelParser.LoadLevel(getLevelString(level));
         ResetPlayer();
+
 
         TryPlayingNextIntroAudio();
     }
