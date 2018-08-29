@@ -16,7 +16,7 @@ public class GoalTileController : TactileController {
 
     private void InitAudioGameGoal() {
         audioGameGoal = gameObject.AddComponent<AudioSource>();
-        audioGameGoal.volume = 0.5f;
+        audioGameGoal.volume = 0.2f;
     }
 
     void Start()

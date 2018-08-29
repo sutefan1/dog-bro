@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioTutorialPlayer;
     bool movementAudioHasBeenPlayed = false;
 
+    private AudioSource nextLevelPlayer;
+
     private Vector3 _resetPosition;
     public Vector3 resetPosition
     {
@@ -55,6 +57,8 @@ public class GameController : MonoBehaviour
     {
         audioTutorialPlayer = gameObject.AddComponent<AudioSource>();
         audioTutorialPlayer.volume = 0.1f; // Because otherwise you wouldn't hear the walking
+
+        nextLevelPlayer = gameObject.AddComponent<AudioSource>();
     }
 
     private void Start()
@@ -87,6 +91,7 @@ public class GameController : MonoBehaviour
         {
             LoadNextLevel();
             levelFinished = false;
+            nextLevelPlayer.PlayOneShot((AudioClip)Resources.Load("Audio/NextLevel"));
         }
         else
         {
@@ -193,7 +198,6 @@ public class GameController : MonoBehaviour
 
     public void PlayTrafficResetAudio() 
     {
-        // TODO!!!!
         PlayAudio("Audio/TrafficResetAudio");
     }
 
