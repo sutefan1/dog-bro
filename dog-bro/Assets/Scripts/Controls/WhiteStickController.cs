@@ -25,17 +25,10 @@ public class WhiteStickController : MonoBehaviour {
         if (e.distance <= 1.6)
         {
 
-            CliffTactileRailController cliffTactileRailController = e.target.GetComponent<CliffTactileRailController>();
+            TrafficController trafficController = e.target.GetComponent<TrafficController>();
             TactileRailController tactileRailController = e.target.GetComponent<TactileRailController>();
 
-            if (cliffTactileRailController != null)
-            {
-                SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3900);
-                //TODO: Cliff sound to get separation to other rails (haptic feedback)
-
-            }
-
-            if (tactileRailController != null)
+            if (tactileRailController != null || trafficController != null)
             {
                 SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3900);
             }

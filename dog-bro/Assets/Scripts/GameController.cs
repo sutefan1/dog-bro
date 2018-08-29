@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            blindController.ToggleBlindness();
+           // blindController.ToggleBlindness();
         }
     }
 
