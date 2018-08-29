@@ -12,7 +12,7 @@ public class DisableTileCubeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        transform.position = new Vector3(head.transform.position.x, 0, head.transform.position.z);
 	}
 
     private void OnTriggerEnter(Collider other)

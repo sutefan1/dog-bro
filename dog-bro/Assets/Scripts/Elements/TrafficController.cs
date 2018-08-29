@@ -6,7 +6,7 @@ public class TrafficController : MonoBehaviour
 {
     //public BoxCollider trafficCollider;
     public float trafficLightOnRed = 5f;
-    public float trafficLightOnGreen = 10f;
+    public float trafficLightOnGreen = 8f;
     public bool startWithRedLight = true;
     public GameObject ground;
 

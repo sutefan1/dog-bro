@@ -27,8 +27,9 @@ public class WhiteStickController : MonoBehaviour {
 
             TrafficController trafficController = e.target.GetComponent<TrafficController>();
             TactileRailController tactileRailController = e.target.GetComponent<TactileRailController>();
+            CheckPoint checkPoint = e.target.GetComponent<CheckPoint>();
 
-            if (tactileRailController != null || trafficController != null)
+            if (tactileRailController != null || trafficController != null || checkPoint != null)
             {
                 SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3900);
             }
