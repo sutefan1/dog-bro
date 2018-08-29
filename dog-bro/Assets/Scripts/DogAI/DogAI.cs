@@ -22,7 +22,7 @@ public class DogAI : BasicAI, IFollowState, IWarnState, IIndicateSafteyState, ID
     public AudioSource dangerZoneBarkingAudioSource;
     public AudioSource growlAudioSource;
 
-    private float distanceForDangerZone = 2.5f;
+    private float distanceForDangerZone = 2.0f;
 
     public bool shouldFollow 
     {
