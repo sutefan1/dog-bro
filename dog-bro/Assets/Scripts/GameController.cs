@@ -194,12 +194,18 @@ public class GameController : MonoBehaviour
     public void PlayTrafficResetAudio() 
     {
         // TODO!!!!
+        PlayAudio("Audio/TrafficResetAudio");
     }
 
     void PlayAudio(string fileName)
     {
         if (fileName != null)
         {
+
+            if(audioTutorialPlayer.isPlaying) {
+                audioTutorialPlayer.Stop();
+            }
+
             isIntroPlaying = true;
             audioTutorialPlayer.PlayOneShot((AudioClip)Resources.Load(fileName));
         }
