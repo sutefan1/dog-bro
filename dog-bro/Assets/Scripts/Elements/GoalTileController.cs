@@ -34,7 +34,7 @@ public class GoalTileController : TactileController {
 
         GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
-        if (playerController != null)
+        if (playerController != null && gameController.GetLevel() < 10)
         {
             Debug.Log("Goal Reached!");
 
