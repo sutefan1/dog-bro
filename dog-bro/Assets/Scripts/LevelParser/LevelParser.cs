@@ -18,21 +18,24 @@ public class LevelParser : MonoBehaviour {
     {
         ResetLevel();
 
-        string json;
 
-        using (StreamReader r = new StreamReader(path))
-        {
-            json = r.ReadToEnd();
-        }
 
-        List<Tile> tiles = JsonConvert.DeserializeObject<List<Tile>>(json);
+        TextAsset json_ = Resources.Load(path) as TextAsset;
+        string json = json_.text;
+              
+        //using (StreamReader r = new StreamReader(path))
+        //{
+        //    json = r.ReadToEnd();
+        //}
+
+        TileList tilesList = JsonUtility.FromJson<TileList>(json);
 
         float maxX = -1000;
         float minX = 1000;
         float maxZ = -1000;
         float minZ = 1000;
         GameObject tileGameObject;
-        foreach (Tile tile in tiles)
+        foreach (Tile tile in tilesList.tiles)
         {
             tileGameObject = Instantiate(Resources.Load(tile.name), new Vector3(tile.posX, 0f, tile.posZ), Quaternion.Euler(new Vector3(0f, tile.rotY, 0f))) as GameObject;
             tileGameObject.transform.parent = level.transform;
@@ -107,12 +110,19 @@ public class LevelParser : MonoBehaviour {
         }
     }
 
+    [System.Serializable]
     public class Tile
     {
         public string name;
         public float posX;
         public float posZ;
         public float rotY;
+    }
+
+    [System.Serializable]
+    public class TileList
+    {
+        public List<Tile> tiles;
     }
 
 }

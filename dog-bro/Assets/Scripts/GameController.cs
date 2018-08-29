@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour
 
     private string getLevelString(int levelNumber)
     {
-        return "Assets/Levels/dog-bro_" + levelNumber + ".json";
+        return "Levels/dog-bro_" + levelNumber;
     }
 
 

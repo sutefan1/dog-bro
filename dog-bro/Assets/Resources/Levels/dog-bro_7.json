@@ -1,0 +1,166 @@
+{
+  "tiles": [
+    { "name": "CrosswalkTile", "posX": 0.0, "posZ": 5.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 0.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 1.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 1.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 2.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 2.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 3.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 3.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 4.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 4.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 5.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 6.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 6.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 7.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 7.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 8.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 8.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 9.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 9.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 10.0, "rotY": 0.0 },
+    { "name": "GoalTile", "posX": 0.0, "posZ": 10.5, "rotY": 0.0 },
+    { "name": "StartTile", "posX": -9.511, "posZ": 11.012, "rotY": 0.0 },
+    { "name": "CrosswalkTile", "posX": -4.50599957, "posZ": 0.5, "rotY": 90.0 },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -0.505999565,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -1.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -1.50599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -2.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -2.50599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -3.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -3.50599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -4.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -5.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -5.50599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -6.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    { "name": "CheckPoint", "posX": -6.00599957, "posZ": 0.5, "rotY": 90.0 },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -6.50599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -7.00599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -7.50599957,
+      "posZ": 0.5,
+      "rotY": 90.0
+    },
+    { "name": "TacticlePavingTile", "posX": -8.006, "posZ": 0.5, "rotY": 90.0 },
+    { "name": "TacticlePavingTile", "posX": -8.506, "posZ": 0.5, "rotY": 90.0 },
+    { "name": "TacticlePavingTile", "posX": -9.006, "posZ": 0.5, "rotY": 90.0 },
+    { "name": "TacticlePavingTile", "posX": -9.506, "posZ": 0.5, "rotY": 90.0 },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -9.51,
+      "posZ": 1.01000023,
+      "rotY": 0.0
+    },
+    { "name": "CrosswalkTile", "posX": -9.51, "posZ": 5.51, "rotY": 0.0 },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -9.51,
+      "posZ": 1.51000023,
+      "rotY": 0.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -9.51,
+      "posZ": 2.01000023,
+      "rotY": 0.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -9.51,
+      "posZ": 2.51000023,
+      "rotY": 0.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -9.51,
+      "posZ": 3.01000023,
+      "rotY": 0.0
+    },
+    {
+      "name": "TacticlePavingTile",
+      "posX": -9.51,
+      "posZ": 3.51000023,
+      "rotY": 0.0
+    },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 4.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 4.51, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 5.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 6.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 6.51, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 7.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 7.51, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 8.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 8.51, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 9.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 9.51, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 10.01, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": -9.51, "posZ": 10.51, "rotY": 0.0 }
+  ]
+}
