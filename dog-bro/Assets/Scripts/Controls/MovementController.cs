@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour {
+public class MovementController : MonoBehaviour
+{
 
     public SteamVR_TrackedController controller;
-    public BlindController blindController;
 
     public Transform cameraRigTransform;
-    public Transform headTransform; 
+    public Transform headTransform;
 
     private SteamVR_Controller.Device device;
+    private GameController gameController;
+    private PlayerController playerController;
 
+    private void Start()
+    {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
     private void OnEnable()
     {
@@ -23,19 +30,70 @@ public class MovementController : MonoBehaviour {
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
-        blindController.ToggleBlindness();
+        gameController.RightTriggerClicked();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(blindController.IsBlind()) {
+    void FixedUpdate()
+    {
+          device = SteamVR_Controller.Input((int)controller.controllerIndex);
+    }
 
-            float xAxis = device.GetAxis().x;
-            float yAxis = device.GetAxis().y;
-
-            // TODO: Make this into movement
+    // Update is called once per frame
+    void Update()
+    {
+        //Disable player movement when the Audio is playing
+        if (gameController.isIntroPlaying)
+        {
+            playerController.CharacterIsMoving(false);
+            return;
         }
 
-	}
+        float movementSpeed = 1f;
+
+        bool characterHasMoved = false;
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            cameraRigTransform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
+            characterHasMoved = true;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            cameraRigTransform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
+            characterHasMoved = true;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            cameraRigTransform.Translate(new Vector3(0, 0, -movementSpeed * Time.deltaTime));
+            characterHasMoved = true;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            cameraRigTransform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
+            characterHasMoved = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            gameController.RightTriggerClicked();
+        }
+
+        
+        if (controller.padPressed) {
+
+            float yAxis = device.GetAxis().y;
+
+            // I would remove this, because we never explain that you can move backward!
+            //if(yAxis < -0.5) { movementSpeed *= -1; }
+
+            Vector3 headForward = headTransform.forward;
+            headForward.y = 0;
+
+            cameraRigTransform.position += headForward * movementSpeed * Time.deltaTime;
+            characterHasMoved = true;
+        }
+
+        characterHasMoved = characterHasMoved && !gameController.levelFinished;
+
+        playerController.CharacterIsMoving(characterHasMoved);
+    }
 }

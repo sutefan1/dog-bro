@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TutorialController : MonoBehaviour {
+public class TutorialController : MonoBehaviour
+{
+    private GameController gameController;
+    public AudioSource tutorialAudio;
 
-    public Text tutorialText;
-
-    private bool tutoralIsRunning = false;
-
-    // Currently, only show a basic text that explains what the goal is and how to control the game
-    // Potentially replace it with a voice explenation instead of text.
-    public void ToggleTutorial()
+    void Start()
     {
-        tutoralIsRunning = !tutoralIsRunning;
-        tutorialText.enabled = tutoralIsRunning;
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+        tutorialAudio = GetComponent<AudioSource>();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+        if (other.gameObject.name == "Player")
+        {
+            if (gameController.GetLevel() <= 1)
+            {
+                tutorialAudio.Play();
+            }
+        }
     }
 }

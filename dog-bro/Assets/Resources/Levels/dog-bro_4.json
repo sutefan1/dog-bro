@@ -1,0 +1,25 @@
+{
+  "tiles": [
+    { "name": "CrosswalkTile", "posX": 0.0, "posZ": 5.0, "rotY": 0.0 },
+    { "name": "StartTile", "posX": 0.0, "posZ": 0.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 1.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 1.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 2.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 2.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 3.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 4.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 4.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 5.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 6.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 6.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 7.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 7.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 8.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 8.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 9.0, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 9.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 10.0, "rotY": 0.0 },
+    { "name": "GoalTile", "posX": 0.0, "posZ": 10.5, "rotY": 0.0 },
+    { "name": "TacticlePavingTile", "posX": 0.0, "posZ": 3.5, "rotY": 0.0 }
+  ]
+}
